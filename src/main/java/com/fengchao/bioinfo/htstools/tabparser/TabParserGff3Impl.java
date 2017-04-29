@@ -1,9 +1,9 @@
-package edu.marquette.biology.andersonlab.tabparser;
+package com.fengchao.bioinfo.htstools.tabparser;
+
+import com.fengchao.bioinfo.htstools.domain.BedRecord;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-
-import edu.marquette.biology.andersonlab.domain.BedRecord;
 
 /**
  * GFF3 file DAO
@@ -11,16 +11,16 @@ import edu.marquette.biology.andersonlab.domain.BedRecord;
  * @author Fengchao
  * 
  */
-public class Gff3impl implements tabParser {
+public class TabParserGff3Impl implements ITabParser {
 
 	BufferedReader in;
 
-	public Gff3impl() {
+	public TabParserGff3Impl() {
 
 		System.out.println("No input Bed files!");
 	}
 
-	public Gff3impl(BufferedReader infile) {
+	public TabParserGff3Impl(BufferedReader infile) {
 		in = infile;
 	}
 
@@ -49,7 +49,6 @@ public class Gff3impl implements tabParser {
 		} else{
 			return null;
 		}
-		
 
 	}
 

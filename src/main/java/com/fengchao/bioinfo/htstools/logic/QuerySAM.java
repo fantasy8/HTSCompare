@@ -1,4 +1,5 @@
-package edu.marquette.biology.andersonlab.logic;
+package com.fengchao.bioinfo.htstools.logic;
+import com.fengchao.bioinfo.htstools.domain.BedRecord;
 import htsjdk.samtools.SAMFileReader;
 import htsjdk.samtools.SAMRecord;
 import htsjdk.samtools.util.CloseableIterator;
@@ -6,7 +7,7 @@ import htsjdk.samtools.util.CloseableIterator;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import edu.marquette.biology.andersonlab.domain.BedRecord;
+
 
 /**
  * @author Fengchao

@@ -19,7 +19,7 @@ public class QuerySamTest {
 		//		File gff3file = new File("I:/commons/mm10alignment_2/mmu.gff3");
 		//		FileReader gff3flrdr = new FileReader(gff3file);
 		//		BufferedReader gff3bf = new BufferedReader(gff3flrdr);
-		//		Gff3impl gff3input = new Gff3impl(gff3bf);
+		//		TabParserGff3Impl gff3input = new TabParserGff3Impl(gff3bf);
 		//		BedRecord bed = gff3input.getNextRecord();
 		//		bed.printall();
 		ArrayList<SAMRecord> samarrl= new ArrayList<SAMRecord>();
