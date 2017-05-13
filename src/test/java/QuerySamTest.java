@@ -1,15 +1,15 @@
+import com.fengchao.bioinfo.htstools.domain.BedRecord;
+import com.fengchao.bioinfo.htstools.logic.QuerySAM;
 import htsjdk.samtools.SAMFileReader;
 import htsjdk.samtools.SAMRecord;
 import htsjdk.samtools.SAMRecordIterator;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.junit.Test;
 
-import edu.marquette.biology.andersonlab.domain.BedRecord;
-import edu.marquette.biology.andersonlab.logic.QuerySAM;
 
 public class QuerySamTest {
 

@@ -13,6 +13,4 @@ public interface ITabParser {
 
 	BedRecord getNextRecord() throws IOException;
 
-	void changeCoordinate(int s, int e);
-
 }

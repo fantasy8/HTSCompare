@@ -1,6 +1,7 @@
 package com.fengchao.bioinfo.htstools;
 import com.fengchao.bioinfo.htstools.domain.BedRecord;
 import com.fengchao.bioinfo.htstools.logic.QuerySAM;
+import com.fengchao.bioinfo.htstools.tabparser.TabParserBedImpl;
 import com.fengchao.bioinfo.htstools.tabparser.TabParserGff3Impl;
 import com.fengchao.bioinfo.htstools.tabparser.ITabParser;
 import htsjdk.samtools.SAMFileReader;
@@ -25,10 +26,10 @@ public class MiRComp {
 	public static void main(String[] args) {
 		// fixed for testing purpose
 		//File resultfile = new File("C:/Users/Fengchao/Desktop/IASearch/ctrl2_20141130_02.txt");
-		File resultfile = new File("C:/lab/mtr42_sorted.txt");
-		File bedfile = new File("D:/CloudDrives/Dropbox/IASearch/refseq.gtf");
+		File resultfile = new File("/Users/zhang/Downloads/mtr42_sorted_100.txt");
+		File bedfile = new File("/Users/zhang/Downloads/RefFlat_snord_range100_201705.bed");
 		//File samfile = new File("D:/CloudDrives/Dropbox/IASearch/mtr42_sorted_F_2_20141201.bam");
-		File samfile = new File("C:/lab/mtr42_sorted.bam");
+		File samfile = new File("/Users/zhang/Documents/mm10alignment_2/mtr42_sorted.bam");
 
 		try {
 			miRCompare(samfile, bedfile, resultfile);
@@ -52,7 +53,7 @@ public class MiRComp {
 		// need to integrate this part into parser
 		FileReader in = new FileReader(bedfl);
 		BufferedReader bedbf = new BufferedReader(in);
-		ITabParser gffinput = new TabParserGff3Impl(bedbf);
+		ITabParser gffinput = new TabParserBedImpl(bedbf);
 
 		FileWriter resultoutput = new FileWriter(resultfl);
 
@@ -74,7 +75,7 @@ public class MiRComp {
 			ArrayList<SAMRecord> arrayl = QuerySAM.querySam(bedrecord, samfilereader,
 					10, 0, true, true);
 			double distance = 0;
-			if (arrayl.size()>0) {
+			if (arrayl.size() > 0) {
 				for (SAMRecord samrecord : arrayl) {
 					distance += calcDistance(samrecord, bedrecord);
 					// construct read-miRNA table
