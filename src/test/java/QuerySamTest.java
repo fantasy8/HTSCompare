@@ -1,5 +1,5 @@
 import com.fengchao.bioinfo.htstools.domain.BedRecord;
-import com.fengchao.bioinfo.htstools.logic.QuerySAM;
+import com.fengchao.bioinfo.htstools.logic.QuerySAMUtil;
 import htsjdk.samtools.SAMFileReader;
 import htsjdk.samtools.SAMRecord;
 import htsjdk.samtools.SAMRecordIterator;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class QuerySamTest {
@@ -22,7 +22,7 @@ public class QuerySamTest {
 		//		TabParserGff3Impl gff3input = new TabParserGff3Impl(gff3bf);
 		//		BedRecord bed = gff3input.getNextRecord();
 		//		bed.printall();
-		ArrayList<SAMRecord> samarrl= new ArrayList<SAMRecord>();
+		List<SAMRecord> samarrl= new ArrayList<SAMRecord>();
 		BedRecord bed = new BedRecord();
 		bed.setChrom("chr9");
 		bed.setStart(122669886);
@@ -32,7 +32,7 @@ public class QuerySamTest {
 		File samfile = new File("C:/Users/Fengchao/Desktop/IASearch/mtr42_sorted_F_2.bam");
 		SAMFileReader samfilereader = new SAMFileReader(samfile);
 
-		samarrl = QuerySAM.querySam(bed, samfilereader, 0, 0, true, true);
+		samarrl = QuerySAMUtil.querySam(bed, samfilereader, 0, 0, true, true);
 
 		System.out.println(samarrl.size());
 
