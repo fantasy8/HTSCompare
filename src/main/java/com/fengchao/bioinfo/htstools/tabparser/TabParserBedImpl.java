@@ -43,7 +43,7 @@ public class TabParserBedImpl implements ITabParser {
             bedrecord.setStrand(strand);
             bedrecord.setExtra1(extra1);
             return bedrecord;
-        } else{
+        } else {
             return null;
         }
 

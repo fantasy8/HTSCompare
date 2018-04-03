@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class TabParserGff3Impl implements ITabParser {
 
-	BufferedReader in;
+	private BufferedReader in;
 
 	public TabParserGff3Impl() {
 
@@ -29,7 +29,7 @@ public class TabParserGff3Impl implements ITabParser {
 		BedRecord bedrecord = new BedRecord();
 
 		if ((line = in.readLine()) != null) {
-			String tokens[] = line.split(" ");
+			String tokens[] = line.split(",");
 			String chrom = tokens[0];
 			int start = Integer.parseInt(tokens[3]);
 			int end = Integer.parseInt(tokens[4]);
