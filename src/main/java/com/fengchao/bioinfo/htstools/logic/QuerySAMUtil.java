@@ -46,11 +46,12 @@ public class QuerySAMUtil {
     //If false, the alignment of the returned SAMRecords need only overlap the interval of interest.
 
     while (it.hasNext()) {
-      if(strandFlag && ("-".equals(refRecord.getStrand()) && it.next().getReadNegativeStrandFlag() == false)
-          || ("+".equals(refRecord.getStrand()) && it.next().getReadNegativeStrandFlag() == true)){
+      SAMRecord record = it.next();
+      if(strandFlag && (("-".equals(refRecord.getStrand()) && record.getReadNegativeStrandFlag() == false)
+          || ("+".equals(refRecord.getStrand()) && record.getReadNegativeStrandFlag() == true))){
 
       } else {
-        matchedReads.add(it.next());
+        matchedReads.add(record);
       }
     }
     it.close();

@@ -25,17 +25,19 @@ import java.util.*;
  */
 public class HtsReadsCounter {
 
-  private static boolean adjustDoubleCountedReads = false;
+  private static boolean adjustDoubleCountedReads;
+  private static boolean samQueryStrand;
 
   public static void main(String[] args) {
     if(args.length != 4) {
-      throw new IllegalArgumentException("Must have 3 input paths: result file, genome reference file, sequence file, adjust double counted reads.");
+      throw new IllegalArgumentException("Must have 5 input paths: result file, genome reference file, sequence file, adjust double counted reads, SAM query strand switch");
     }
 
     File resultFile = new File(args[0]);
     File genomeRefFile = new File(args[1]);
     File seqFile = new File(args[2]);
     adjustDoubleCountedReads = Boolean.parseBoolean(args[3]);
+    samQueryStrand = Boolean.parseBoolean(args[4]);
 
     try {
       startComparison(seqFile, genomeRefFile, resultFile);
@@ -65,7 +67,7 @@ public class HtsReadsCounter {
     BedRecord refEntry;
     while ((refEntry = referenceFile.getNextRecord()) != null) {
       List<SAMRecord> matchedReads = QuerySAMUtil.querySam(refEntry, samfilereader,
-          10, 0, true, true);
+          20, 20, true, samQueryStrand);
       double distance = 0;
       if (matchedReads.size() > 0) {
         for (SAMRecord sequenceRead : matchedReads) {
